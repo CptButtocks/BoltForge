@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://boltforge.local/schemas/level.schema.json",
+  "title": "BoltForge Level Metadata",
+  "type": "object",
+  "required": ["schema_version", "id", "game", "source_build_id", "assets"],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": { "type": "integer", "const": 1 },
+    "id": { "type": "string" },
+    "game": { "type": "string" },
+    "source_build_id": { "type": "string" },
+    "display_name": { "type": "string" },
+    "assets": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": { "type": "string" }
+      }
+    },
+    "unknowns": {
+      "type": "array",
+      "items": { "type": "object", "additionalProperties": true }
+    }
+  }
+}

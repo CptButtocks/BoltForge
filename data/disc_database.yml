@@ -1,0 +1,6 @@
+schema_version: 1
+sector_size: 2048
+builds: []
+
+# Add known builds only after verifying hashes from a legally obtained local
+# disc image. Do not include local file paths or extracted game data.

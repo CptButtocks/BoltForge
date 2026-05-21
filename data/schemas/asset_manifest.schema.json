@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://boltforge.local/schemas/asset_manifest.schema.json",
+  "title": "BoltForge Asset Manifest",
+  "type": "object",
+  "required": ["schema_version", "source", "assets"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "type": "integer", "const": 1 },
+    "source": {
+      "type": "object",
+      "required": ["disc_build_id", "iso_sha256"],
+      "additionalProperties": true,
+      "properties": {
+        "disc_build_id": { "type": "string" },
+        "iso_sha256": { "type": "string", "pattern": "^[0-9a-fA-F]{64}$" }
+      }
+    },
+    "assets": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/asset" }
+    }
+  },
+  "$defs": {
+    "asset": {
+      "type": "object",
+      "required": ["id", "type", "provenance"],
+      "additionalProperties": true,
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string" },
+        "provenance": { "$ref": "#/$defs/provenance" },
+        "decode_status": {
+          "type": "string",
+          "enum": ["raw", "decoded", "converted", "unknown"]
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["sector", "byte_offset", "byte_size"],
+      "additionalProperties": false,
+      "properties": {
+        "sector": { "type": "integer", "minimum": 0 },
+        "byte_offset": { "type": "integer", "minimum": 0 },
+        "byte_size": { "type": "integer", "minimum": 0 },
+        "hash_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-fA-F]{64}$"
+        }
+      }
+    }
+  }
+}

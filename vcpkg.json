@@ -1,0 +1,13 @@
+{
+  "name": "boltforge",
+  "version-string": "0.1.0",
+  "builtin-baseline": "6fad4fa784ab2506e35144a7c3d64738976445ea",
+  "dependencies": [
+    "catch2",
+    "cli11",
+    "fmt",
+    "nlohmann-json",
+    "spdlog",
+    "yaml-cpp"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://boltforge.local/schemas/texture.schema.json",
+  "title": "BoltForge Texture Metadata",
+  "type": "object",
+  "required": ["schema_version", "id", "width", "height", "format"],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": { "type": "integer", "const": 1 },
+    "id": { "type": "string" },
+    "width": { "type": "integer", "minimum": 1 },
+    "height": { "type": "integer", "minimum": 1 },
+    "format": { "type": "string" },
+    "palette_format": { "type": "string" },
+    "swizzle": { "type": "string" },
+    "alpha_mode": { "type": "string" },
+    "source_asset_id": { "type": "string" }
+  }
+}

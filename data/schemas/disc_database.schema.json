@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://boltforge.local/schemas/disc_database.schema.json",
+  "title": "BoltForge Disc Database",
+  "type": "object",
+  "required": ["schema_version", "sector_size", "builds"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "type": "integer", "const": 1 },
+    "sector_size": { "type": "integer", "const": 2048 },
+    "builds": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/build" }
+    }
+  },
+  "$defs": {
+    "build": {
+      "type": "object",
+      "required": ["id", "game", "region", "status", "hashes"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_-]*$" },
+        "game": {
+          "type": "string",
+          "enum": ["rac1", "rac2", "rac3", "deadlocked"]
+        },
+        "title": { "type": "string" },
+        "region": { "type": "string" },
+        "serial": { "type": "string" },
+        "disc_label": { "type": "string" },
+        "boot_executable": { "type": "string" },
+        "iso_size_bytes": { "type": "integer", "minimum": 1 },
+        "hashes": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "crc32": { "type": "string", "pattern": "^[0-9a-fA-F]{8}$" },
+            "sha1": { "type": "string", "pattern": "^[0-9a-fA-F]{40}$" },
+            "sha256": { "type": "string", "pattern": "^[0-9a-fA-F]{64}$" }
+          }
+        },
+        "toc": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "sector": { "type": "integer", "minimum": 0 },
+            "format": { "type": "string" },
+            "confidence": { "$ref": "#/$defs/confidence" }
+          }
+        },
+        "status": {
+          "type": "string",
+          "enum": ["target", "supported", "research", "unsupported"]
+        },
+        "notes": { "type": "string" }
+      }
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["confirmed", "inferred", "unknown"]
+    }
+  }
+}

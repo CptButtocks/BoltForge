@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://boltforge.local/schemas/sound_bank.schema.json",
+  "title": "BoltForge Sound Bank Metadata",
+  "type": "object",
+  "required": ["schema_version", "id", "game", "entries"],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": { "type": "integer", "const": 1 },
+    "id": { "type": "string" },
+    "game": { "type": "string" },
+    "format": { "type": "string" },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type"],
+        "additionalProperties": true,
+        "properties": {
+          "id": { "type": "string" },
+          "type": { "type": "string" },
+          "source_asset_id": { "type": "string" }
+        }
+      }
+    }
+  }
+}

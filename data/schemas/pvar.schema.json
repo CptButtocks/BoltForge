@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://boltforge.local/schemas/pvar.schema.json",
+  "title": "BoltForge PVar Schema",
+  "type": "object",
+  "required": ["schema_version", "id", "game", "fields"],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": { "type": "integer", "const": 1 },
+    "id": { "type": "string" },
+    "game": { "type": "string" },
+    "class_id": { "type": "integer", "minimum": 0 },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["offset", "name", "type", "confidence"],
+        "additionalProperties": true,
+        "properties": {
+          "offset": { "type": "integer", "minimum": 0 },
+          "name": { "type": "string" },
+          "type": { "type": "string" },
+          "confidence": {
+            "type": "string",
+            "enum": ["confirmed", "inferred", "unknown"]
+          }
+        }
+      }
+    }
+  }
+}

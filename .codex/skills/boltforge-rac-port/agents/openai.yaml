@@ -1,0 +1,7 @@
+interface:
+  display_name: "BoltForge R&C Port"
+  short_description: "Native R&C port research and tooling"
+  default_prompt: "Use $boltforge-rac-port to work on BoltForge importer, tooling, or native runtime tasks."
+
+policy:
+  allow_implicit_invocation: true

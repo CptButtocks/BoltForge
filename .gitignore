@@ -1,0 +1,59 @@
+# Build outputs
+build/
+out/
+dist/
+bin/
+obj/
+CMakeFiles/
+CMakeCache.txt
+CMakeUserPresets.json
+compile_commands.json
+vcpkg_installed/
+.vcpkg/
+
+# Editor and OS noise
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.swp
+Thumbs.db
+Desktop.ini
+
+# Local caches and generated import data
+.cache/
+.import-cache/
+asset_store/
+extracted_assets/
+local_assets/
+local_traces/
+local_captures/
+
+# User-provided game media and extracted copyrighted game data
+*.iso
+*.ISO
+*.cso
+*.CSO
+*.chd
+*.CHD
+*.mdf
+*.MDF
+*.cue
+*.CUE
+*.bin
+*.BIN
+*.elf
+*.ELF
+*.irx
+*.IRX
+*.wad
+*.WAD
+*.vag
+*.VAG
+*.pss
+*.PSS
+
+# Synthetic fixtures are allowed when intentionally committed.
+!data/synthetic_fixtures/
+!data/synthetic_fixtures/**

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://boltforge.local/schemas/moby.schema.json",
+  "title": "BoltForge Moby Class Metadata",
+  "type": "object",
+  "required": ["schema_version", "game", "class_id", "confidence"],
+  "additionalProperties": true,
+  "properties": {
+    "schema_version": { "type": "integer", "const": 1 },
+    "game": { "type": "string" },
+    "class_id": { "type": "integer", "minimum": 0 },
+    "name": { "type": "string" },
+    "model_asset_id": { "type": "string" },
+    "pvar_schema_id": { "type": "string" },
+    "update_function_symbol": { "type": "string" },
+    "confidence": {
+      "type": "string",
+      "enum": ["confirmed", "inferred", "unknown"]
+    }
+  }
+}
